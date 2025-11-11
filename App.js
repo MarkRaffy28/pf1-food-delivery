@@ -72,6 +72,9 @@ function App() {
   const styles = {
     btnOperation: {
       fontSize: 10.5,
+    },
+    btnCart: {
+      fontSize: 14
     }
   }
   
@@ -102,11 +105,11 @@ function App() {
                     <img className='image' src={food.image} alt={food.name}></img>
                     <h6 className="card-title fw-bold lh-base"> 
                       {food.name} 
-                      <span className="card-text fs-6 text-muted ms-3 mb-3">₱{food.price}</span>
                     </h6>
                   </div>
                   
                   <div className="d-flex align-items-center justify-content-center gap-2">
+                    <span className="card-text fs-6 text-muted">₱{food.price} ×</span>
                     <button
                       style={styles.btnOperation}
                       className="btn btn-danger btn-sm fw-bold"
@@ -114,6 +117,7 @@ function App() {
                     >
                       −
                     </button>
+                    <span className='fw-bold'>{quantities[food.id] || 1}</span>
                     <button
                       style={styles.btnOperation}
                       className="btn btn-success btn-sm fw-bold"
@@ -121,11 +125,14 @@ function App() {
                     >
                       +
                     </button>
+                  </div>
+                  <div className='mt-2'>
                     <button
-                      className="btn btn-primary ms-2 py-1 w-100"
+                      style={styles.btnCart}
+                      className="btn btn-primary ms-2 py-1 w-100 fw-semibold"
                       onClick={() => addToCart(food)}
                     >
-                      Add <span className='fw-bold'>x{quantities[food.id] || 1}</span>
+                      Add to Cart
                     </button>
                   </div>
                 </div>
