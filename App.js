@@ -70,8 +70,12 @@ function App() {
   };
   
   const styles = {
+    price: {
+      fontSize: 14
+    },
     btnOperation: {
-      fontSize: 10.5,
+      fontSize: 10,
+      padding: 5
     },
     btnCart: {
       fontSize: 14
@@ -80,7 +84,7 @@ function App() {
   
   return (
     <div className="container my-5">
-      <h1 className="fw-bold text-center mb-4">🍔 Food Delivery System</h1>
+      <h2 className="fw-bold text-center mb-4">🍔 Food Delivery System</h2>
       {message && (
         <div className="alert alert-info text-center fw-bold alert-dismissible fade show" role="alert">
           {message}
@@ -96,11 +100,11 @@ function App() {
       
       {/* Food List */}
       <div className="row">
-        <div className="col-lg-8 row lists">
+        <div className="col-12 col-lg-8 row g-3 lists">
           {foods.map(food => (
-            <div key={food.id} className="list mb-4 col-6 col-md-4 col-lg-4">
-              <div className="card h-100 shadow-sm border border-dark border-2 rounded">
-                <div className="card-body text-center d-flex flex-column justify-content-between">
+            <div key={food.id} className="list col-6 col-md-4 col-lg-4">
+              <div className="card h-100 shadow-sm border border-dark rounded">
+                <div className="card-body p-2 text-center d-flex flex-column justify-content-between">
                   <div>
                     <img className='image' src={food.image} alt={food.name}></img>
                     <h6 className="card-title fw-bold lh-base"> 
@@ -109,7 +113,7 @@ function App() {
                   </div>
                   
                   <div className="d-flex align-items-center justify-content-center gap-2">
-                    <span className="card-text fs-6 text-muted">₱{food.price} ×</span>
+                    <p style={styles.price} className="card-text text-muted m-0 p-0">₱{food.price} ×</p>
                     <button
                       style={styles.btnOperation}
                       className="btn btn-danger btn-sm fw-bold"
@@ -129,7 +133,7 @@ function App() {
                   <div className='mt-2'>
                     <button
                       style={styles.btnCart}
-                      className="btn btn-primary ms-2 py-1 w-100 fw-semibold"
+                      className="btn btn-primary py-1 w-100 fw-semibold"
                       onClick={() => addToCart(food)}
                     >
                       Add to Cart
@@ -142,7 +146,7 @@ function App() {
         </div>
         
         {/* Cart Section */}
-        <div className='col-lg-4'>
+        <div className='col-12 col-lg-4'>
           <hr className="my-5 d-block d-lg-none" />
           <h2 className="text-center mb-4 fw-bold">🛒 Your Cart</h2>
           
