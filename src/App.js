@@ -159,6 +159,9 @@ const App = () => {
                 <p className="text-2xl font-bold text-red-600 mb-4">₱{food.price}</p>
                 
                 <div className="flex items-center justify-between mb-4">
+                  {(quantities[food.id] > 1) && (
+                    <span className="text-xl font-bold text-green-800 transition-all duration-300 opacity-100 scale-110">₱{food.price * quantities[food.id]}</span>
+                  )}
                   <button
                     onClick={() => updateQuantity(food.id, -1)}
                     className="bg-gray-200 p-2 rounded-full hover:bg-red-500 hover:text-white transition-all duration-200 hover:scale-110 active:scale-95"
